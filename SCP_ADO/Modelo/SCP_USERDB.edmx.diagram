@@ -4,7 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8938239137614b988fb7b89075fb466e" Name="Diagram1" />
+      <Diagram DiagramId="8938239137614b988fb7b89075fb466e" Name="Diagram1" >
+        <EntityTypeShape EntityType="SCP_USERDB.Usuario" Width="1.5" PointX="4.125" PointY="4.375" />
+        <EntityTypeShape EntityType="SCP_USERDB.Nuevos_Usuario" Width="1.5" PointX="7" PointY="2.625" />
+        <AssociationConnector Association="SCP_USERDB.UsuarioNuevos_Usuario" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

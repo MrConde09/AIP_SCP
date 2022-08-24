@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6DA9FCFD-9159-487A-818E-3EF037C2E0E6}</ProjectGuid>
+    <ProjectGuid>{86EFF43C-21EC-4E8D-8655-A56A7FA475A0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AIP_SCP</RootNamespace>
-    <AssemblyName>AIP_SCP</AssemblyName>
+    <RootNamespace>SCP_ADO</RootNamespace>
+    <AssemblyName>SCP_ADO</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,10 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,23 +53,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VIEW\Form_Menu.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Modelo\Nuevos_Usuario.cs">
+      <DependentUpon>SCP_USERDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="VIEW\Form_Menu.Designer.cs">
-      <DependentUpon>Form_Menu.cs</DependentUpon>
+    <Compile Include="Modelo\SCP_USERDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCP_USERDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SCP_USERDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCP_USERDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SCP_USERDB.Designer.cs">
+      <DependentUpon>SCP_USERDB.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Modelo\Usuario.cs">
+      <DependentUpon>SCP_USERDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VIEW\Form_User.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\Form_User.Designer.cs">
-      <DependentUpon>Form_User.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="VIEW\Form_Menu.resx">
-      <DependentUpon>Form_Menu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,9 +85,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="VIEW\Form_User.resx">
-      <DependentUpon>Form_User.cs</DependentUpon>
-    </EmbeddedResource>
+    <EntityDeploy Include="Modelo\SCP_USERDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SCP_USERDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelo\SCP_USERDB.edmx.diagram">
+      <DependentUpon>SCP_USERDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +105,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modelo\SCP_USERDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SCP_USERDB.Context.cs</LastGenOutput>
+      <DependentUpon>SCP_USERDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Modelo\SCP_USERDB.edmx.sql" />
+    <Content Include="Modelo\SCP_USERDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SCP_USERDB.cs</LastGenOutput>
+      <DependentUpon>SCP_USERDB.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
