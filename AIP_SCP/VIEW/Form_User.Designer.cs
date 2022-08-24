@@ -93,6 +93,7 @@ namespace AIP_SCP.VIEW
             this.btn_salir.TabIndex = 3;
             this.btn_salir.Text = "SALIR ";
             this.btn_salir.UseVisualStyleBackColor = true;
+            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
             // 
             // btn_entrar
             // 
